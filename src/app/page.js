@@ -9,15 +9,16 @@ export default function Museum() {
   const handleEnter = () => {
     setHasEntered(true);
     if (audioRef.current) {
+      // Sets the system volume to 30% automatically
       audioRef.current.volume = 0.3; 
-      audioRef.current.play().catch(e => console.log("Audio play failed:", e));
+      audioRef.current.play().catch(e => console.log("Audio failed:", e));
     }
   };
 
   return (
     <main className="min-h-screen w-full selection:bg-[#F9F7F2] selection:text-[#160D1A] bg-[#0B060D] overflow-x-hidden">
       
-      {/* 1. THE ENTRY SCREEN */}
+      {/* 1. THE ENTRY SCREEN (Triggers Audio & Entry) */}
       <AnimatePresence>
         {!hasEntered && (
           <motion.div 
@@ -52,23 +53,19 @@ export default function Museum() {
                   className="absolute inset-0 bg-[#B888BA] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"
                 />
               </button>
-
-              <p className="text-[#F9F7F2]/30 text-[9px] uppercase tracking-widest italic">
-                (Please enable audio for the full experience)
-              </p>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* 2. BACKGROUND AUDIO */}
+      {/* 2. BACKGROUND AUDIO (Fixed Filename: bg_music.mp3) */}
       <audio ref={audioRef} loop src="/bg_music.mp3"></audio>
 
       {/* 3. THE MUSEUM CONTENT */}
       <motion.div 
         animate={{ opacity: hasEntered ? 1 : 0 }}
         transition={{ duration: 2.5, ease: "easeOut" }}
-        className={hasEntered ? "pointer-events-auto" : "pointer-events-none"}
+        className={hasEntered ? "pointer-events-auto" : "opacity-0 pointer-events-none"}
       >
         
         {/* HERO SECTION */}
@@ -85,7 +82,7 @@ export default function Museum() {
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-serif text-[#F9F7F2] italic leading-tight drop-shadow-2xl">
               The Steadfastness
             </h1>
-            <p className="mt-12 text-xs md:text-sm font-light tracking-[0.3em] text-[#F9F7F2]/50 max-w-xl mx-auto uppercase leading-loose">
+            <p className="mt-12 text-xs md:text-sm font-light tracking-[0.3em] text-[#F9F7F2]/50 max-w-xl mx-auto uppercase leading-loose text-center">
               An archive dedicated to the one who endures the heavy parts and remains a fountain of love.
             </p>
           </motion.div>
@@ -167,27 +164,6 @@ export default function Museum() {
         </section>
 
       </motion.div>
-
-      {/* AUDIO TOGGLE */}
-      <AnimatePresence>
-        {hasEntered && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50"
-          >
-            <button 
-              onClick={() => {
-                if (audioRef.current.paused) audioRef.current.play();
-                else audioRef.current.pause();
-              }}
-              className="px-6 py-2 bg-[#160D1A]/40 backdrop-blur-xl border border-[#B888BA]/10 rounded-full text-[9px] uppercase tracking-[0.4em] text-[#B888BA] hover:text-[#F9F7F2] hover:border-[#B888BA]/40 transition-all duration-500 shadow-xl"
-            >
-              Toggle Ambient Audio
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
     </main>
   );
