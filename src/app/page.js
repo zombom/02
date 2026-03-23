@@ -10,7 +10,7 @@ export default function Museum() {
     setHasEntered(true);
     if (audioRef.current) {
       // Sets the system volume to 30% automatically
-      audioRef.current.volume = 0.3; 
+      audioRef.current.volume = 0.1; 
       audioRef.current.play().catch(e => console.log("Audio failed:", e));
     }
   };
