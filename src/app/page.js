@@ -77,7 +77,7 @@ export default function Museum() {
             className="text-center z-10"
           >
             <span className="uppercase tracking-[0.4em] text-xs text-[#B888BA] font-semibold mb-8 block">
-              Exhibit • Private Collection
+              Exhibit • Private Collection • Song loading...
             </span>
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-serif text-[#F9F7F2] italic leading-tight drop-shadow-2xl">
               The Steadfastness
