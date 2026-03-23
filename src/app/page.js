@@ -62,7 +62,7 @@ export default function Museum() {
       </AnimatePresence>
 
       {/* 2. BACKGROUND AUDIO */}
-      <audio ref={audioRef} loop src="/bg-music.mp3"></audio>
+      <audio ref={audioRef} loop src="/bg_music.mp3"></audio>
 
       {/* 3. THE MUSEUM CONTENT */}
       <motion.div 
@@ -104,7 +104,7 @@ export default function Museum() {
               className="w-full md:w-1/2 aspect-4/5 bg-[#160D1A] relative overflow-hidden ring-1 ring-[#F9F7F2]/5 shadow-2xl"
             >
               <img 
-                src="/pic1.jpg" 
+                src="/pic1.jpeg" 
                 alt="First Exhibit"
                 className="object-cover w-full h-full grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-1500 scale-105 hover:scale-100"
               />
@@ -127,7 +127,7 @@ export default function Museum() {
               className="w-full md:w-1/2 aspect-square bg-[#160D1A] relative overflow-hidden ring-1 ring-[#F9F7F2]/5 shadow-2xl"
             >
               <img 
-                src="/pic2.jpg" 
+                src="/pic2.jpeg" 
                 alt="Second Exhibit"
                 className="object-cover w-full h-full grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-1500 scale-105 hover:scale-100"
               />
